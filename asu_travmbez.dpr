@@ -19,8 +19,8 @@ uses
   fmAbout in 'fmAbout.pas' {FormAbout},
   fmAddNPA in 'протокол\fmAddNPA.pas' {FormAddNPA},
   fmInputList in 'протокол\fmInputList.pas' {FormInputList},
-  uUpdater in '..\_UPDATER\uUpdater.pas',
-  uConf in '..\_conf\uConf.pas',
+  uUpdater in '_UPDATER\uUpdater.pas',
+  uConf in '_conf\uConf.pas',
   fmPabUsers in 'Руководителю\fmPabUsers.pas' {FormPabUsers},
   fmPabAdd in 'Руководителю\fmPabAdd.pas' {FormPabAdd},
   fmPabList in 'Руководителю\fmPabList.pas' {FormPabList},
@@ -73,7 +73,7 @@ begin
   Zeromemory(@si,sizeof(si));
   si.cb := sizeof(si);
     
-  if CreateProcess(nil,PAnsiChar('"'+fname+'" '+params),nil,nil,false,NORMAL_PRIORITY_CLASS,nil,nil,si,pi) then
+  if CreateProcess(nil,PWideChar('"'+fname+'" '+params),nil,nil,false,NORMAL_PRIORITY_CLASS,nil,nil,si,pi) then
   begin
     result := true;
     if wait then

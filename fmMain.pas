@@ -286,7 +286,7 @@ begin
           'Версия: '+StatusVersion.VersionInfo.FileVersion+'%0A'+
           'Дата: '+ d +'%0D%0A%0D%0A';
   mail := 'mailto:'+admin_email+'?Subject=АСУ Травмобезопасность&Body='+body;
-  ShellExecute(Handle,'open',PAnsiChar(mail),'','',SW_SHOW);
+  ShellExecute(Handle,'open',PWideChar(mail),'','',SW_SHOW);
 end;
 
 procedure TFormMain.N23Click(Sender: TObject);

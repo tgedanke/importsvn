@@ -70,7 +70,6 @@ object FormOOSGetPeriod: TFormOOSGetPeriod
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     TabOrder = 1
     Text = '2010'
     Items.Strings = (
@@ -91,7 +90,6 @@ object FormOOSGetPeriod: TFormOOSGetPeriod
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     TabOrder = 2
     Text = '1'
     Items.Strings = (
@@ -122,7 +120,6 @@ object FormOOSGetPeriod: TFormOOSGetPeriod
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     TabOrder = 4
     Text = #1054#1073#1086#1073#1097#1077#1085#1085#1099#1081
     Visible = False

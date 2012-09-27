@@ -307,7 +307,7 @@ end;
 
 procedure ShowErrorBox(msg:string);
 begin
-  MessageBox(Application.ActiveFormHandle,PAnsiChar(msg),MSG_ERROR_TITLE,MB_OK or MB_ICONERROR);
+  MessageBox(Application.ActiveFormHandle,PWideChar(msg),MSG_ERROR_TITLE,MB_OK or MB_ICONERROR);
 end;
 
 
