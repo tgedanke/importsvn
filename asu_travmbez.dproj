@@ -1,0 +1,239 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{7AB232E2-7447-4845-BD30-EC3123852A35}</ProjectGuid>
+			<MainSource>asu_travmbez.dpr</MainSource>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.3</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vcl;rtl;vclx;dbrtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;IndyCore;IndySystem;vclactnband;VclSmp;soaprtl;dsnap;bdertl;vcldbx;webdsnap;RaizeComponentsVcl;RaizeComponentsVclDb;dsnapcon;IntrawebDB_80_100;Intraweb_80_100;IndyProtocols;websnap;NKA;NKADB;tee;teedb;Package1;teeui</DCC_UsePackage>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_UnitSearchPath>C:\Packages\NKA;C:\Packages\NKADB;C:\Program Files\Raize\RC5\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="asu_travmbez.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="fmMain.pas">
+				<Form>FormMain</Form>
+			</DCCReference>
+			<DCCReference Include="DataModule.pas">
+				<Form>DataModule1</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="справочники\Предприятия\fmPredpriatia.pas">
+				<Form>FormPredpriatia1</Form>
+			</DCCReference>
+			<DCCReference Include="справочники\Профессии и Должности\fmProfPost.pas">
+				<Form>FormProfPost</Form>
+			</DCCReference>
+			<DCCReference Include="справочники\Работники предприятий\fmRabotniki.pas">
+				<Form>FormRabotniki</Form>
+			</DCCReference>
+			<DCCReference Include="протокол\fmProtocolNew.pas">
+				<Form>FormProtocolNew</Form>
+			</DCCReference>
+			<DCCReference Include="справочники\Документы\fmDocs.pas">
+				<Form>FormDocs</Form>
+			</DCCReference>
+			<DCCReference Include="справочники\Оборудование и приспособления\fmTool.pas">
+				<Form>FormTool</Form>
+			</DCCReference>
+			<DCCReference Include="справочники\Состояния и мероприятия\fmSostoyanie.pas">
+				<Form>FormSostoyanie</Form>
+			</DCCReference>
+			<DCCReference Include="report.pas"/>
+			<DCCReference Include="протокол\fmProtocolList.pas"/>
+			<DCCReference Include="fmAbout.pas">
+				<Form>FormAbout</Form>
+			</DCCReference>
+			<DCCReference Include="протокол\fmAddNPA.pas">
+				<Form>FormAddNPA</Form>
+			</DCCReference>
+			<DCCReference Include="протокол\fmInputList.pas">
+				<Form>FormInputList</Form>
+			</DCCReference>
+			<DCCReference Include="_UPDATER\uUpdater.pas"/>
+			<DCCReference Include="_conf\uConf.pas"/>
+			<DCCReference Include="Руководителю\fmPabUsers.pas">
+				<Form>FormPabUsers</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabAdd.pas">
+				<Form>FormPabAdd</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabList.pas">
+				<Form>FormPabList</Form>
+			</DCCReference>
+			<DCCReference Include="uExcel.pas"/>
+			<DCCReference Include="Руководителю\rPabCard.pas"/>
+			<DCCReference Include="Руководителю\fmGetUser.pas">
+				<Form>FormGetUser</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabReturn.pas">
+				<Form>FormPabReturn</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSList.pas">
+				<Form>FormOOSList</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSEdit.pas">
+				<Form>FormOOSEdit</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSAddOper.pas">
+				<Form>FormOOSAddOper</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmLimitsAndBalance.pas">
+				<Form>FormLimits</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSTakeBalance.pas">
+				<Form>FormOOSTakeBalance</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSView.pas">
+				<Form>FormOOSView</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\rSummary.pas"/>
+			<DCCReference Include="ООС\fmOOSGetPeriod.pas">
+				<Form>FormOOSGetPeriod</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\rFull.pas"/>
+			<DCCReference Include="Руководителю\rPabAuditor.pas"/>
+			<DCCReference Include="Руководителю\ReportLogic.pas"/>
+			<DCCReference Include="Руководителю\fmGetPeriod.pas">
+				<Form>FormGetPeriod</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabGetCeh.pas">
+				<Form>FormPabGetCeh</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\rPabCeh.pas"/>
+			<DCCReference Include="Руководителю\rPabType.pas"/>
+			<DCCReference Include="Руководителю\rPabBossDecision.pas"/>
+			<DCCReference Include="Руководителю\rPabWorkKind.pas"/>
+			<DCCReference Include="Руководителю\rPabCategory.pas"/>
+			<DCCReference Include="ООС\rSeverstal.pas"/>
+			<DCCReference Include="ООС\r2TP.pas"/>
+			<DCCReference Include="ООС\fmOOSNormative.pas">
+				<Form>FormOOSNormative</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\rTeh.pas"/>
+			<DCCReference Include="ООС\fmOOSWaste.pas">
+				<Form>FormOOSWaste</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmCompany.pas">
+				<Form>FormOOSCompanies</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabGraphic.pas">
+				<Form>FormGraphic</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\fmPabGraphicAddUsers.pas">
+				<Form>FormGraphicAddUsers</Form>
+			</DCCReference>
+			<DCCReference Include="Руководителю\rPabPlan.pas"/>
+			<DCCReference Include="ООС\rOperations.pas"/>
+			<DCCReference Include="Руководителю\rAnalytic.pas"/>
+			<DCCReference Include="Руководителю\fmPabAnalytic.pas">
+				<Form>FormAnalytic</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSProps.pas">
+				<Form>FormOOSProps</Form>
+			</DCCReference>
+			<DCCReference Include="ООС\fmOOSPropsAdd.pas">
+				<Form>FormOOSPropsAdd</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">asu_travmbez.dpr</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">31</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">CCM-Tyagmash</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.31.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">ASUTRAVMBEZ</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\sv.duchenko\Мои документы\Borland Studio Projects\Bpl\qrpt70.bpl">QuickReport Runtime Package</Excluded_Packages>
+						<Excluded_Packages Name="C:\Documents and Settings\sv.duchenko\Мои документы\Borland Studio Projects\Bpl\dclqrt70.bpl">QuickReport Components</Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="c:\program files\borland\bds\4.0\Bin\bcbie100.bpl">Borland C++Builder Internet Explorer 5 Components Package</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
