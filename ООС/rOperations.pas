@@ -53,7 +53,9 @@ case otch of
 SQL := 'EXEC GetLimits '+IntToStr(quarter)+' ,'''+IntToStr(year)+'''';
      end;
   1: begin
-SQL := 'SELECT  0 AS priz_zh, main.code_id, max(main.year), max(main.quarter), main.code, main.waste, main.class, '+
+SQL := 'exec dbo.wsReportCex ' + inttostr(ceh) + ',' + IntToStr(quarter) + ',' + IntToStr(year);
+      {
+      'SELECT  0 AS priz_zh, main.code_id, max(main.year), max(main.quarter), main.code, main.waste, main.class, '+
       '(SELECT SUM(vr.weight) AS Expr1 '+
        'FROM   travmbez.dbo.ws_view_report AS vr '+                                          // AND (vr.operation_id <> 0)
        'WHERE  (vr.src_company_id = 5) AND (vr.waste = main.waste) AND (vr.code = main.code) AND '+
@@ -98,12 +100,15 @@ SQL := 'SELECT  0 AS priz_zh, main.code_id, max(main.year), max(main.quarter), m
        'FROM   travmbez.dbo.ws_view_report AS vr '+
        'WHERE  (vr.dst_company_id = 5) AND (vr.waste = main.waste) AND (vr.operation_id = 0) AND (vr.code = main.code) AND '+
               '(vr.year = '+inttostr(year1)+') AND (vr.quarter >= 1) AND (vr.quarter <= '+inttostr(quarter1)+') AND (vr.src_dept_id = '+inttostr(ceh)+')) AS nach_nakop, '+
+      }
      { '(select max(wy.balance_o) as balance '+
        'from travmbez.dbo.ws_view_report as wr '+
             'left join travmbez.dbo.ws_codes_year as wy on wy.year=wr.year and wy.code_id=wr.code_id '+
        'WHERE  (wr.dst_company_id = 5) AND (wr.waste = main.waste) AND (wr.operation_id >= 0) AND (wr.code = main.code) AND (wr.dst_dept_id = '+inttostr(ceh)+') AND '+
                '(wr.year = '+inttostr(year)+') AND (wr.quarter = '+inttostr(quarter)+') AND (wr.src_dept_id = '+inttostr(ceh)+')) AS nach_nakop, '+
-      }'(SELECT SUM(vr.weight) AS Expr1 '+
+      }
+      {
+      '(SELECT SUM(vr.weight) AS Expr1 '+
        'FROM   travmbez.dbo.ws_view_report AS vr '+
        'WHERE  (vr.dst_company_id = 5) AND (vr.waste = main.waste) AND (vr.operation_id < 0) AND (vr.code = main.code) AND '+
               '(vr.year = '+inttostr(year)+') AND (vr.quarter >= 1) AND (vr.quarter <= '+inttostr(quarter)+') AND (vr.src_dept_id = '+inttostr(ceh)+')) AS kon_hran, '+
@@ -124,8 +129,9 @@ SQL := 'SELECT  0 AS priz_zh, main.code_id, max(main.year), max(main.quarter), m
          '((main.operation_id = 0) AND (main.year = '+inttostr(year1)+') AND (main.quarter >= 1) AND (main.quarter <= '+inttostr(quarter1)+') AND (main.src_dept_id = '+inttostr(ceh)+')) '+
       'GROUP BY  main.code_id, main.code, main.waste, main.class '+
       'ORDER BY class, code'; //main.year, main.quarter,
+      }
      end;
-  2: begin 
+  2: begin
 SQL := 'SELECT  main.code_id, main.year, main.quarter, main.code, main.waste, main.class, main.dst_company, main.dst_dept, com.contract, '+
       '(SELECT SUM(vr.weight) AS Expr1 '+
        'FROM   travmbez.dbo.ws_view_report AS vr '+
@@ -231,11 +237,11 @@ case otch of
   /// write data to Excel document                        
   e := TExcelWriter.Create;
   path := extractfilepath(paramstr(0));
-case otch of
-  0: e.Open(path+'templates\oos\обобщенный.xlt');
-  1: e.Open(path+'templates\oos\по цехам.xlt');
-  2,4: e.Open(path+'templates\oos\переданные.xlt');
-  3: e.Open(path+'templates\oos\принятые.xlt');
+  case otch of
+    0: e.Open(path+'templates\oos\обобщенный.xlt');
+    1: e.Open(path+'templates\oos\по цехам.xlt');
+    2,4: e.Open(path+'templates\oos\переданные.xlt');
+    3: e.Open(path+'templates\oos\принятые.xlt');
   end;
   e.Show;
 
@@ -245,37 +251,38 @@ case otch of
     AQuery.Filter := 'class='+inttostr(i);
     AQuery.Filtered := true;
 
-    if AQuery.RecordCount = 0 then continue;
+    if AQuery.RecordCount = 0 then
+      continue;
 
     AQuery.First;
     rowid := 0;
 
-case otch of
-  0: begin
-    while not AQuery.Eof do
-    begin
-      e.Cells[8,rowid+rowmap[i]] := AQuery.FieldByName('waste').AsVariant;
-      e.Cells[26,rowid+rowmap[i]] := AQuery.FieldByName('code').AsVariant;
-      e.Cells[35,rowid+rowmap[i]] := AQuery.FieldByName('nach_hran').AsFloat;
-      e.Cells[43,rowid+rowmap[i]] := AQuery.FieldByName('nach_nakop').AsFloat;
-      e.Cells[51,rowid+rowmap[i]] := AQuery.FieldByName('obrazov').AsFloat;
-      e.Cells[59,rowid+rowmap[i]] := AQuery.FieldByName('priem_ind').AsFloat;
-      e.Cells[74,rowid+rowmap[i]] := AQuery.FieldByName('isp').AsFloat;
-      e.Cells[83,rowid+rowmap[i]] := AQuery.FieldByName('obezvr').AsFloat;
-      e.Cells[98,rowid+rowmap[i]] := AQuery.FieldByName('pered_isp').AsFloat;
-      e.Cells[106,rowid+rowmap[i]] := AQuery.FieldByName('pered_obezvr').AsFloat;
-      e.Cells[114,rowid+rowmap[i]] := AQuery.FieldByName('pered_hran').AsFloat;
-      e.Cells[122,rowid+rowmap[i]] := AQuery.FieldByName('pered_zahor').AsFloat;
-      e.Cells[136,rowid+rowmap[i]] := AQuery.FieldByName('razm_hran').AsFloat;
-      e.Cells[144,rowid+rowmap[i]] := AQuery.FieldByName('razm_zahor').AsFloat;
-      e.Cells[152,rowid+rowmap[i]] := AQuery.FieldByName('kon_hran').AsFloat;
-     // e.Cells[160,rowid+rowmap[i]] := AQuery.FieldByName('kon_nakop').AsFloat;
-     // e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
-      AQuery.Next;
-      rowid:= rowid+1;
-    end;
-    e.Cells[110,7] := quarter;
-    e.Cells[130,7] := year;
+    case otch of
+      0: begin
+      while not AQuery.Eof do
+      begin
+        e.Cells[8,rowid+rowmap[i]] := AQuery.FieldByName('waste').AsVariant;
+        e.Cells[26,rowid+rowmap[i]] := AQuery.FieldByName('code').AsVariant;
+        e.Cells[35,rowid+rowmap[i]] := AQuery.FieldByName('nach_hran').AsFloat;
+        e.Cells[43,rowid+rowmap[i]] := AQuery.FieldByName('nach_nakop').AsFloat;
+        e.Cells[51,rowid+rowmap[i]] := AQuery.FieldByName('obrazov').AsFloat;
+        e.Cells[59,rowid+rowmap[i]] := AQuery.FieldByName('priem_ind').AsFloat;
+        e.Cells[74,rowid+rowmap[i]] := AQuery.FieldByName('isp').AsFloat;
+        e.Cells[83,rowid+rowmap[i]] := AQuery.FieldByName('obezvr').AsFloat;
+        e.Cells[98,rowid+rowmap[i]] := AQuery.FieldByName('pered_isp').AsFloat;
+        e.Cells[106,rowid+rowmap[i]] := AQuery.FieldByName('pered_obezvr').AsFloat;
+        e.Cells[114,rowid+rowmap[i]] := AQuery.FieldByName('pered_hran').AsFloat;
+        e.Cells[122,rowid+rowmap[i]] := AQuery.FieldByName('pered_zahor').AsFloat;
+        e.Cells[136,rowid+rowmap[i]] := AQuery.FieldByName('razm_hran').AsFloat;
+        e.Cells[144,rowid+rowmap[i]] := AQuery.FieldByName('razm_zahor').AsFloat;
+        e.Cells[152,rowid+rowmap[i]] := AQuery.FieldByName('kon_hran').AsFloat;
+        // e.Cells[160,rowid+rowmap[i]] := AQuery.FieldByName('kon_nakop').AsFloat;
+       // e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
+        AQuery.Next;
+        rowid:= rowid+1;
+      end;
+      e.Cells[110,7] := quarter;
+      e.Cells[130,7] := year;
      end;
   1: begin
     while not AQuery.Eof do

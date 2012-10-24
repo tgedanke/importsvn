@@ -80,7 +80,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel5: TRzPanel
       Left = 0
       Top = -265
-      Width = 975
+      Width = 974
       Height = 29
       Align = alTop
       BorderSides = [sdTop, sdBottom]
@@ -99,7 +99,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel1: TRzPanel
       Left = 0
       Top = -236
-      Width = 975
+      Width = 974
       Height = 103
       Align = alTop
       BorderInner = fsLowered
@@ -419,7 +419,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel4: TRzPanel
       Left = 0
       Top = -133
-      Width = 975
+      Width = 974
       Height = 29
       Align = alTop
       BorderSides = [sdTop, sdBottom]
@@ -437,7 +437,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel3: TRzPanel
       Left = 0
       Top = -104
-      Width = 975
+      Width = 974
       Height = 430
       Align = alTop
       BorderInner = fsLowered
@@ -446,7 +446,7 @@ object FormProtocolNew: TFormProtocolNew
       object RzDBGrid1: TRzDBGrid
         Left = 0
         Top = 0
-        Width = 975
+        Width = 974
         Height = 393
         Align = alClient
         DataSource = dsProtocolnsd
@@ -532,7 +532,7 @@ object FormProtocolNew: TFormProtocolNew
       object RzPanel8: TRzPanel
         Left = 0
         Top = 393
-        Width = 975
+        Width = 974
         Height = 37
         Align = alBottom
         BorderOuter = fsNone
@@ -560,6 +560,7 @@ object FormProtocolNew: TFormProtocolNew
           Width = 240
           Height = 25
           DataSource = dsProtocolnsd
+          BorderOuter = fsNone
           TabOrder = 0
         end
         object RzButton2: TRzButton
@@ -587,7 +588,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel12: TRzPanel
       Left = 0
       Top = 359
-      Width = 975
+      Width = 974
       Height = 358
       Align = alTop
       BorderOuter = fsNone
@@ -732,6 +733,7 @@ object FormProtocolNew: TFormProtocolNew
         Width = 200
         Height = 25
         DataSource = dsProverili
+        BorderOuter = fsNone
         TabOrder = 1
         Visible = False
       end
@@ -784,14 +786,15 @@ object FormProtocolNew: TFormProtocolNew
         Width = 200
         Height = 25
         DataSource = dspredstaviteli
+        BorderOuter = fsNone
         TabOrder = 3
         Visible = False
       end
       object RzDBCheckBox1: TRzDBCheckBox
         Left = 208
         Top = 224
-        Width = 93
-        Height = 17
+        Width = 95
+        Height = 15
         DataField = 'sootv1'
         DataSource = dsProtocol
         ValueChecked = '1'
@@ -808,8 +811,8 @@ object FormProtocolNew: TFormProtocolNew
       object RzDBCheckBox2: TRzDBCheckBox
         Left = 198
         Top = 243
-        Width = 103
-        Height = 17
+        Width = 98
+        Height = 15
         DataField = 'sootv2'
         DataSource = dsProtocol
         ValueChecked = '1'
@@ -826,8 +829,8 @@ object FormProtocolNew: TFormProtocolNew
       object RzDBCheckBox3: TRzDBCheckBox
         Left = 270
         Top = 262
-        Width = 103
-        Height = 17
+        Width = 98
+        Height = 15
         DataField = 'sootv3'
         DataSource = dsProtocol
         ValueChecked = '1'
@@ -844,8 +847,8 @@ object FormProtocolNew: TFormProtocolNew
       object RzDBCheckBox4: TRzDBCheckBox
         Left = 23
         Top = 300
-        Width = 99
-        Height = 17
+        Width = 95
+        Height = 15
         DataField = 'sootv4'
         DataSource = dsProtocol
         ValueChecked = '1'
@@ -920,6 +923,7 @@ object FormProtocolNew: TFormProtocolNew
         Width = 200
         Height = 25
         DataSource = dsOtvetsvtennii
+        BorderOuter = fsNone
         TabOrder = 10
         Visible = False
       end
@@ -939,7 +943,7 @@ object FormProtocolNew: TFormProtocolNew
     object RzPanel14: TRzPanel
       Left = 0
       Top = 326
-      Width = 975
+      Width = 974
       Height = 33
       Align = alTop
       BorderSides = [sdTop, sdBottom]
@@ -1417,7 +1421,7 @@ object FormProtocolNew: TFormProtocolNew
       'insert into tb_protocol_nsd (protocol_id,num,tool_id) values(:pi' +
       'd,:num,:tool)'
     Connection = DataModule1.KMCConnection
-    Prepared = True
+    
     Parameters = <
       item
         Name = 'pid'

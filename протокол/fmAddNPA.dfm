@@ -380,8 +380,7 @@ object FormAddNPA: TFormAddNPA
       'update tb_protocol_nsd set d_sootv = :sootv, d_mer = :mer , d_so' +
       'st = :sost where nsd_id = :nsd and punkt_id = :pid and protocol_' +
       'id = :protocolid and num = :num'
-    Connection = DataModule1.KMCConnection
-    Prepared = True
+    Connection = DataModule1.KMCConnection    
     Parameters = <
       item
         Name = 'sootv'
