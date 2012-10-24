@@ -132,7 +132,9 @@ SQL := 'exec dbo.wsReportCex ' + inttostr(ceh) + ',' + IntToStr(quarter) + ',' +
       }
      end;
   2: begin
-SQL := 'SELECT  main.code_id, main.year, main.quarter, main.code, main.waste, main.class, main.dst_company, main.dst_dept, com.contract, '+
+    SQL := 'dbo.wsReportPass ' + inttostr(ceh) + ',' + IntToStr(quarter)
+      + ',' + IntToStr(year);
+{'SELECT  main.code_id, main.year, main.quarter, main.code, main.waste, main.class, main.dst_company, main.dst_dept, com.contract, '+
       '(SELECT SUM(vr.weight) AS Expr1 '+
        'FROM   travmbez.dbo.ws_view_report AS vr '+
        'WHERE  (vr.dst_company_id NOT IN (5)) AND (vr.waste = main.waste) AND (vr.operation_id = 1) AND (vr.code = main.code) AND (vr.dst_dept_id <> '+inttostr(ceh)+') AND '+
@@ -153,6 +155,7 @@ SQL := 'SELECT  main.code_id, main.year, main.quarter, main.code, main.waste, ma
         'WHERE     (main.year = '+inttostr(year)+') AND (main.quarter = '+inttostr(quarter)+') AND main.dst_company_id=com.id AND (main.src_dept_id = '+inttostr(ceh)+')  AND main.dst_company_id NOT IN (5) '+
       'GROUP BY  main.code_id, main.year, main.quarter, main.code, main.waste, main.class, main.dst_company, main.dst_dept, com.contract '+
       'ORDER BY class, code';
+      }
      end;
   3: begin
 SQL := 'SELECT  main.code_id, main.year, main.quarter, main.code, main.waste, main.class, main.src_company, com.contract, '+

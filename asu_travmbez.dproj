@@ -80,8 +80,8 @@
 			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-			<VerInfo_MinorVer>33</VerInfo_MinorVer>
-			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.33.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.33.0.0;Comments=</VerInfo_Keys>
+			<VerInfo_MinorVer>34</VerInfo_MinorVer>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.34.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.34.0.0;Comments=</VerInfo_Keys>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 		</PropertyGroup>
 		<ItemGroup>
