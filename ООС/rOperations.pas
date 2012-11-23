@@ -280,7 +280,7 @@ case otch of
         e.Cells[144,rowid+rowmap[i]] := AQuery.FieldByName('razm_zahor').AsFloat;
         e.Cells[152,rowid+rowmap[i]] := AQuery.FieldByName('kon_hran').AsFloat;
         // e.Cells[160,rowid+rowmap[i]] := AQuery.FieldByName('kon_nakop').AsFloat;
-       // e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
+        e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
         AQuery.Next;
         rowid:= rowid+1;
       end;
@@ -321,8 +321,8 @@ case otch of
       if (AQuery.FieldByName('kon_hran').AsFloat=0) then e.Cells[154,rowid+rowmap[i]] := '0,00' else
       e.Cells[154,rowid+rowmap[i]] := AQuery.FieldByName('kon_hran').AsFloat;
   //    if (AQuery.FieldByName('kon_nakop').AsFloat=0) then e.Cells[161,rowid+rowmap[i]] := '0,00' else
- //     e.Cells[161,rowid+rowmap[i]] := AQuery.FieldByName('kon_nakop').AsFloat;
-   //   e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
+      e.Cells[161,rowid+rowmap[i]] := AQuery.FieldByName('kon_nakop').AsFloat;
+      e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
       AQuery.Next;
       rowid:= rowid+1;
     end;
@@ -340,7 +340,7 @@ case otch of
       e.Cells[97,rowid+rowmap[i]] := AQuery.FieldByName('pered_zahor').AsFloat;
       e.Cells[113,rowid+rowmap[i]] := AQuery.FieldByName('dst_dept').AsVariant+' '+AQuery.FieldByName('dst_company').AsVariant;
       e.Cells[149,rowid+rowmap[i]] := AQuery.FieldByName('contract').AsVariant;
-      //.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
+      e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
       AQuery.Next;
       rowid:= rowid+1;
     end;
@@ -358,7 +358,7 @@ case otch of
       e.Cells[105,rowid+rowmap[i]] := AQuery.FieldByName('priem_zahor').AsFloat;
       e.Cells[120,rowid+rowmap[i]] := AQuery.FieldByName('src_company').AsString;
       e.Cells[148,rowid+rowmap[i]] := AQuery.FieldByName('contract').AsString;
-     // e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
+      e.Sheet.Rows[rowid+rowmap[i]].RowHeight:= 10;
       AQuery.Next;
       rowid:= rowid+1;
     end;
